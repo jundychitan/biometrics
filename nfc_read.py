@@ -48,6 +48,7 @@ def readSerialNo():
 			#connection.transmit(COMMAND)
 			#Read command [FF, B0, 00, page, #bytes]
 			resp = connection.transmit([0xFF, 0xCA, 0x00, 0x00, 0x00])
+			print resp
 			dataCurr = stringParser(resp)
 			#print dataCurr
 			#only allows new tags to be worked so no duplicates
@@ -77,7 +78,8 @@ def readTag(page):
 			connection.transmit(COMMAND)
 			#Read command [FF, B0, 00, page, #bytes]
 			resp = connection.transmit([0xFF, 0xB0, 0x00, int(page), 0x04])
-			print resp
+			dataCurr = stringParser(resp)
+			print dataCurr
 			dataCurr = stringParser(resp)
 
 			#only allows new tags to be worked so no duplicates
